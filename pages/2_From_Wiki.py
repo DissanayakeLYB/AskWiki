@@ -48,7 +48,7 @@ respond_template = PromptTemplate(
 llm = ChatGroq(
     api_key=groq_api_key ,
     model_name=model,
-    temperature=0.1
+    temperature=0
 )
 respond_chain = LLMChain(llm=llm, prompt=respond_template, verbose=True)
 
