@@ -6,7 +6,6 @@ load_dotenv()
 import streamlit as st
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
-from langchain.memory import ConversationBufferMemory
 from langchain.utilities import WikipediaAPIWrapper
 from langchain.chains import ConversationChain
 from langchain_groq import ChatGroq
@@ -45,17 +44,13 @@ respond_template = PromptTemplate(
     template = "Write about the {topic} using {wikipedia_research} and mention the sources and links to them as well."
 )
 
-# memory
-memory = ConversationBufferMemory(input_key='topic', memory_key='chat_history')
-
-
 # llms
 llm = ChatGroq(
     api_key=groq_api_key ,
     model_name=model,
     temperature=0.1
 )
-respond_chain = LLMChain(llm=llm, prompt=respond_template, verbose=True, memory=memory)
+respond_chain = LLMChain(llm=llm, prompt=respond_template, verbose=True)
 
 wiki = WikipediaAPIWrapper()
 
