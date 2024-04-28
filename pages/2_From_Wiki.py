@@ -41,7 +41,7 @@ with st.sidebar:
 # prompt templates
 respond_template = PromptTemplate(
     input_variables = ['topic', 'wikipedia_research'],
-    template = "Write about the {topic} using {wikipedia_research} and mention the sources and links to them as well."
+    template = "Write about the {topic} using {wikipedia_research} and mention the sources and links to them as well. If you do not have any information on {wikipedia_research} about {topic}, then reply with 'Sorry, I couldn't find any details in Wikipedia under {topic}."
 )
 
 # llms
