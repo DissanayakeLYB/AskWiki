@@ -3,3 +3,4 @@ groq
 streamlit
 langchain
 langchain-groq
+wikipedia
