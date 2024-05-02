@@ -8,12 +8,9 @@ from langchain.chains.conversation.memory import ConversationBufferWindowMemory
 from langchain_groq import ChatGroq
 from langchain.prompts import PromptTemplate
 
+#load_dotenv()
 
-load_dotenv()
-
-client = Groq(
-    api_key=os.getenv("groq_API"),
-)
+groq_api_key = st.sidebar.text_input("Enter the GROQ API :")
 
 memory=ConversationBufferWindowMemory(k=10)
 
@@ -56,26 +53,28 @@ with st.sidebar:
         st.session_state.chat_history=[]
     
 
-groq_chat = ChatGroq(
-    groq_api_key=os.getenv("groq_API"), 
-    model_name=model
-)
+if groq_api_key:
+    
+    groq_chat = ChatGroq(
+        groq_api_key=groq_api_key, 
+        model_name=model
+    )
 
-conversation = ConversationChain(
-    llm=groq_chat,
-    memory=memory
-)
+    conversation = ConversationChain(
+        llm=groq_chat,
+        memory=memory
+    )
 
 
-if input_message:
+    if input_message:
 
-    response = conversation(input_message)
-    message = {'human':input_message, 'AI':response['response']}
+        response = conversation(input_message)
+        message = {'human':input_message, 'AI':response['response']}
 
-    st.session_state.chat_history.append(message)
+        st.session_state.chat_history.append(message)
 
-    with st.chat_message("user"):
-        st.write(f"Human : {input_message}")
+        with st.chat_message("user"):
+            st.write(f"Human : {input_message}")
 
-    with st.chat_message("assistant"):    
-        st.write("AI : ", response['response'])
+        with st.chat_message("assistant"):    
+            st.write("AI : ", response['response'])
