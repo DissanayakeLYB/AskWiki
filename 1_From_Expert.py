@@ -10,9 +10,7 @@ from langchain.prompts import PromptTemplate
 
 #load_dotenv()
 
-groq_api_key = st.sidebar.text_input("Enter the GROQ API :")
 
-memory=ConversationBufferWindowMemory(k=10)
 
 st.set_page_config(
     page_title = "ExpertChat",
@@ -24,7 +22,9 @@ st.set_page_config(
     }
 )
 
+groq_api_key = st.sidebar.text_input("Enter the GROQ API :")
 
+memory=ConversationBufferWindowMemory(k=10)
 
 st.title("ExpertChat")
 
@@ -54,7 +54,7 @@ with st.sidebar:
     
 
 if groq_api_key:
-    
+
     groq_chat = ChatGroq(
         groq_api_key=groq_api_key, 
         model_name=model

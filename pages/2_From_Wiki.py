@@ -11,7 +11,6 @@ from langchain.chains import ConversationChain
 from langchain_groq import ChatGroq
 from groq import Groq
 
-groq_api_key = st.sidebar.text_input("Enter the GROQ API :")
 
 st.set_page_config(
     page_title = "AskWiki",
@@ -22,6 +21,8 @@ st.set_page_config(
         "About" : "https://dissanayakelyb.github.io/LasithDissanayake.github.io/"
     }
 )
+
+groq_api_key = st.sidebar.text_input("Enter the GROQ API :")
 
 # app framework
 st.title("AskWiki")
