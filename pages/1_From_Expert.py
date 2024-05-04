@@ -10,8 +10,6 @@ from langchain.prompts import PromptTemplate
 
 #load_dotenv()
 
-
-
 st.set_page_config(
     page_title = "ExpertChat",
     page_icon = "🧪",
