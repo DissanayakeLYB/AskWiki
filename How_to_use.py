@@ -17,7 +17,7 @@ st.subheader("Step 02 - Get your free Groq API key from https://console.groq.com
 
 st.subheader("Step 03 - Create a new API key and save it.")
 
-st.subheader("Step 04 - Paste it in 'Enter the GROQ API' in 'From Expert'.")
+st.subheader("Step 04 - Paste it in 'Enter the GROQ API' in 'AskWiki'.")
 
 st.subheader("Step 05 - Select a model of your Choice.")
 
