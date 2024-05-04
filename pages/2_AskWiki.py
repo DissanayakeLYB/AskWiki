@@ -42,12 +42,12 @@ with st.sidebar:
 # prompt templates
 respond_template = PromptTemplate(
     input_variables = ['topic', 'wikipedia_research'],
-    template = "Write about the {topic} using {wikipedia_research} and mention the sources and links to them as well. If you do not have any information on {wikipedia_research} about {topic}, then reply with 'Sorry, I couldn't find any details in Wikipedia under {topic}."
+    template = "Write a well organized description about the {topic} using {wikipedia_research} and especially mention the sources and links to them as well. If you do not have any information on {wikipedia_research} about {topic}, then reply with 'Sorry, I couldn't find any details in Wikipedia under {topic}."
 )
 
 reference_template = PromptTemplate(
     input_variables = ['topic'],
-    template = "Write 20 suitable wikipedia site links under {topic}."
+    template = "Write 20 suitable website links that explains or are under the topic,  {topic}."
 )
 
 if groq_api_key:

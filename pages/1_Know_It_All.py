@@ -11,7 +11,7 @@ from langchain.prompts import PromptTemplate
 #load_dotenv()
 
 st.set_page_config(
-    page_title = "ExpertChat",
+    page_title = "Mr.KnowItAll",
     page_icon = "🧪",
     initial_sidebar_state = 'auto',
     menu_items = {
@@ -24,7 +24,7 @@ groq_api_key = st.sidebar.text_input("Enter the GROQ API :")
 
 memory=ConversationBufferWindowMemory(k=10)
 
-st.title("ExpertChat")
+st.title("Mr. KnowItAll")
 
 input_message = st.chat_input("Ask from expert...")
 
@@ -34,6 +34,12 @@ if 'chat_history' not in st.session_state:
 else:
     for message in st.session_state.chat_history:
         memory.save_context({'input':message['human']},{'output':message['AI']})
+
+        with st.chat_message("user"):
+            st.write(message["human"])
+
+        with st.chat_message("assistant"):
+            st.write(message["AI"])
 
 with st.sidebar:
 
