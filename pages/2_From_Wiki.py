@@ -77,3 +77,4 @@ if groq_api_key:
 
 
 
+st.write("&copy; Lasith Dissanayake | 2024")

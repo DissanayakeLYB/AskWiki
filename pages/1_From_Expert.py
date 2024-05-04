@@ -72,7 +72,10 @@ if groq_api_key:
         st.session_state.chat_history.append(message)
 
         with st.chat_message("user"):
-            st.write(f"Human : {input_message}")
+            st.write(input_message)
 
         with st.chat_message("assistant"):    
-            st.write("AI : ", response['response'])
+            st.write(response['response'])
+
+
+st.write("&copy; Lasith Dissanayake | 2024")
