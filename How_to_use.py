@@ -24,6 +24,3 @@ st.subheader("Step 05 - Select a model of your Choice.")
 st.subheader("Step 06 - Use the chat input and embrace the ultra fast responses.")
 
 st.write("&copy; Lasith Dissanayake | 2024")
-
-with open("styles.css") as f:
-    st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
