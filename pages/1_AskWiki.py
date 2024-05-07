@@ -42,7 +42,7 @@ with st.sidebar:
 # prompt templates
 respond_template = PromptTemplate(
     input_variables = ['topic', 'wikipedia_research'],
-    template = "Write a well organized description about the {topic} using {wikipedia_research} and especially mention the sources and links to them as well. If you do not have any information on {wikipedia_research} about {topic}, then reply with 'Sorry, I couldn't find any details in Wikipedia under {topic}."
+    template = "Write a well organized description about the {topic} using {wikipedia_research}. If you do not have any information on {wikipedia_research} about {topic}, then reply with 'Sorry, I couldn't find any details in Wikipedia under {topic}."
 )
 
 reference_template = PromptTemplate(
@@ -68,9 +68,10 @@ if groq_api_key:
         response = respond_chain.run(topic=prompt, wikipedia_research = wiki_research)
         references = reference_chain.run(topic=prompt)
 
+        st.write("From Wikipedia")
         st.write(response)
 
-        with st.expander('References') :
+        with st.expander('For more information') :
             st.write(references)   
 
             
