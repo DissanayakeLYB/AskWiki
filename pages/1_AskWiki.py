@@ -22,7 +22,7 @@ st.set_page_config(
 )
 
 
-groq_api_key = os.getenv("Groq_API")
+groq_api_key = "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"
 
 # app framework
 st.write("&copy; Lasith Dissanayake | 2024")
