@@ -54,7 +54,7 @@ reference_template = PromptTemplate(
 if groq_api_key:
     # llms
     llm = ChatGroq(
-        api_key=os.getenv("Groq_API"),
+        api_key=groq_api_key,
         model_name=model,
         temperature=0
     )
