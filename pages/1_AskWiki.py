@@ -1,7 +1,7 @@
 import os
 from dotenv import load_dotenv
 
-#load_dotenv()
+load_dotenv()
 
 import streamlit as st
 from langchain.prompts import PromptTemplate
@@ -21,7 +21,7 @@ st.set_page_config(
     }
 )
 
-groq_api_key = st.sidebar.text_input("Enter the GROQ API :")
+groq_api_key = os.getenv("Groq_API")
 
 # app framework
 st.title("AskWiki")
