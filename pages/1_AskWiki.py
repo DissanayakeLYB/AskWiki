@@ -21,11 +21,13 @@ st.set_page_config(
     }
 )
 
+
 groq_api_key = os.getenv("Groq_API")
 
 # app framework
 st.title("AskWiki")
-prompt = st.chat_input("Mention 'ONLY' the topic you need in Wikipedia...")
+st.write("&copy; Lasith Dissanayake | 2024")
+prompt = st.chat_input("Mention 'ONLY' the topic you need find in Wikipedia...")
 
 with st.sidebar:
 
@@ -78,4 +80,3 @@ if groq_api_key:
 
 
 
-st.write("&copy; Lasith Dissanayake | 2024")
