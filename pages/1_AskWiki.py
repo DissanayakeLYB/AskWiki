@@ -25,8 +25,8 @@ st.set_page_config(
 groq_api_key = os.getenv("Groq_API")
 
 # app framework
-st.title("AskWiki")
 st.write("&copy; Lasith Dissanayake | 2024")
+st.title("AskWiki")
 prompt = st.chat_input("Mention 'ONLY' the topic you need find in Wikipedia...")
 
 with st.sidebar:
@@ -52,29 +52,29 @@ reference_template = PromptTemplate(
     template = "Write 20 suitable links that explains the topic, {topic}."
 )
 
-if groq_api_key:
-    # llms
-    llm = ChatGroq(
-        api_key=groq_api_key,
-        model_name=model,
-        temperature=0
-    )
-    respond_chain = LLMChain(llm=llm, prompt=respond_template, verbose=True)
-    reference_chain = LLMChain(llm=llm, prompt=reference_template, verbose=True)
 
-    wiki = WikipediaAPIWrapper()
+# llms
+llm = ChatGroq(
+    api_key=groq_api_key,
+    model_name=model,
+    temperature=0
+)
+respond_chain = LLMChain(llm=llm, prompt=respond_template, verbose=True)
+reference_chain = LLMChain(llm=llm, prompt=reference_template, verbose=True)
 
-    # response
-    if prompt:
-        wiki_research = wiki.run(prompt)
-        response = respond_chain.run(topic=prompt, wikipedia_research = wiki_research)
-        references = reference_chain.run(topic=prompt)
+wiki = WikipediaAPIWrapper()
 
-        st.write("From Wikipedia -")
-        st.write(response)
+# response
+if prompt:
+    wiki_research = wiki.run(prompt)
+    response = respond_chain.run(topic=prompt, wikipedia_research = wiki_research)
+    references = reference_chain.run(topic=prompt)
 
-        with st.expander('For more information -') :
-            st.write(references)   
+    st.write("From Wikipedia -")
+    st.write(response)
+
+    with st.expander('For more information -') :
+        st.write(references)   
 
             
 
